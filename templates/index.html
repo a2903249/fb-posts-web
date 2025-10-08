@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>粉專貼文展示</title>
+  <style>
+    body { font-family: sans-serif; background:#f7f7f7; margin:0; padding:0; }
+    h1 { text-align:center; margin-top:20px; }
+    .container { max-width:800px; margin:20px auto; }
+    .post { background:white; border-radius:10px; padding:15px; margin-bottom:20px; box-shadow:0 0 5px rgba(0,0,0,0.1); }
+    .post img { max-width:100%; border-radius:5px; margin-top:10px; }
+    .post a { text-decoration:none; color:#1877f2; }
+  </style>
+</head>
+<body>
+  <h1>Facebook 貼文爬蟲測試</h1>
+  <div class="container">
+    {% for p in posts %}
+    <div class="post">
+      <p><b>{{ p['created_time'] }}</b></p>
+      <p>{{ p['message'] }}</p>
+      {% if p['full_picture'] %}
+      <img src="{{ p['full_picture'] }}">
+      {% endif %}
+      <p><a href="{{ p['permalink_url'] }}" target="_blank">前往原始貼文</a></p>
+    </div>
+    {% endfor %}
+  </div>
+</body>
+</html>
