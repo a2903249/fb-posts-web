@@ -1,0 +1,35 @@
+name: Update Facebook Posts CSV
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  update-csv:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install facebook-sdk pandas
+
+      - name: Run fb-sdk.py
+        run: python fb-sdk.py
+
+      - name: Commit and push updated CSV
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add ./posts.csv
+          git commit -m "Auto update posts [skip ci]" || echo "No changes to commit"
+          git push
