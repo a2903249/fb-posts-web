@@ -20,7 +20,7 @@
     {% for p in posts %}
       <div class="post" style="margin-bottom:20px; border-bottom:1px solid #ccc; padding-bottom:10px;">
         <p><b>{{ p['created_time'] }}</b></p>
-        <p>{{ p['message'] or "無文字內容" }}</p>
+         <p>{{ p.message|replace('\n', '<br>')|safe }}</p>
         {% if p['full_picture'] %}
         <img src="{{ p['full_picture'] }}" style="max-width:100%; height:auto;">
         {% endif %}
