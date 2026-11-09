@@ -30,7 +30,9 @@ Render
 
 ## 專案畫面
 
-<img src="screenshot.png" width="600">
+使用 Flask 將爬蟲蒐集到的 Facebook 貼文呈現在網頁上，包含發布時間、貼文內容及圖片。
+
+![Flask 網頁畫面](screenshot.png)
 
 ## 專案成果
 
