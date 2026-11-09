@@ -30,7 +30,7 @@ Render
 
 ## 專案畫面
 
-<img src="screenshot.png" width="800">
+<img src="screenshot.png" width="600">
 
 ## 專案成果
 
